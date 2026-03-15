@@ -1,0 +1,131 @@
+[
+  {
+    "model_size": "small",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward_backward",
+    "compiled": false,
+    "parameter_count": 120945408,
+    "model_config": {
+      "d_model": 768,
+      "d_ff": 3072,
+      "num_layers": 12,
+      "num_heads": 12,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "backward_time": {
+        "mean": 0.05090145450085402,
+        "std": 0.0013881833504200294,
+        "min": 0.04983263649046421,
+        "max": 0.053595082834362984
+      },
+      "forward_time": {
+        "mean": 0.034251831099390985,
+        "std": 0.0007615996741145378,
+        "min": 0.033428868278861046,
+        "max": 0.03548663295805454
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 1232.693359375,
+      "std": 0.0,
+      "min": 1232.693359375,
+      "max": 1232.693359375
+    }
+  },
+  {
+    "model_size": "medium",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward_backward",
+    "compiled": false,
+    "parameter_count": 412943360,
+    "model_config": {
+      "d_model": 1024,
+      "d_ff": 4096,
+      "num_layers": 24,
+      "num_heads": 16,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "backward_time": {
+        "mean": 0.09602161366492509,
+        "std": 0.002102983508572703,
+        "min": 0.09415703639388084,
+        "max": 0.10105719417333603
+      },
+      "forward_time": {
+        "mean": 0.06447083577513694,
+        "std": 0.0009229474692542945,
+        "min": 0.06327425502240658,
+        "max": 0.06608790159225464
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 3374.7021484375,
+      "std": 0.0,
+      "min": 3374.7021484375,
+      "max": 3374.7021484375
+    }
+  },
+  {
+    "model_size": "large",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward_backward",
+    "compiled": false,
+    "parameter_count": 956611840,
+    "model_config": {
+      "d_model": 1280,
+      "d_ff": 5120,
+      "num_layers": 36,
+      "num_heads": 20,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "backward_time": {
+        "mean": 0.15934738349169492,
+        "std": 0.0030340475791882874,
+        "min": 0.15477414056658745,
+        "max": 0.16429614834487438
+      },
+      "forward_time": {
+        "mean": 0.09181213248521089,
+        "std": 0.0014309269662651394,
+        "min": 0.09007292054593563,
+        "max": 0.09544090367853642
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 7686.1435546875,
+      "std": 0.0,
+      "min": 7686.1435546875,
+      "max": 7686.1435546875
+    }
+  },
+  {
+    "model_size": "xl",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward_backward",
+    "compiled": false,
+    "status": "oom",
+    "error": "CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 2.44 MiB is free. Including non-PyTorch memory, this process has 11.62 GiB memory in use. Of the allocated memory 10.96 GiB is allocated by PyTorch, and 368.58 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+  },
+  {
+    "model_size": "2.7B",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward_backward",
+    "compiled": false,
+    "status": "oom",
+    "error": "CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 36.44 MiB is free. Including non-PyTorch memory, this process has 11.59 GiB memory in use. Of the allocated memory 11.26 GiB is allocated by PyTorch, and 25.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+  }
+]

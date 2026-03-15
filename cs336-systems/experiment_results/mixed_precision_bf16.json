@@ -1,0 +1,12 @@
+{
+  "device": "cuda",
+  "autocast_dtype": "bfloat16",
+  "observed_dtypes": {
+    "parameter_dtype_in_autocast": "float32",
+    "fc1_output_dtype": "bfloat16",
+    "layer_norm_output_dtype": "float32",
+    "logits_dtype": "bfloat16",
+    "loss_dtype": "float32",
+    "gradient_dtype": "float32"
+  }
+}

@@ -1,62 +1,118 @@
+from __future__ import annotations
+
+import argparse
+import json
+
 import torch
 import torch.nn as nn
-import torch.optim as optim
-from torch.amp import autocast, GradScaler
+import torch.nn.functional as F
+from torch.amp import GradScaler
+
+
+DTYPE_MAP = {
+    "float16": torch.float16,
+    "bfloat16": torch.bfloat16,
+}
+
 
 class ToyModel(nn.Module):
-    def __init__(self, input_dim=1024, hidden_dim=512, output_dim=10):
-        super(ToyModel, self).__init__()
-        self.fc1 = nn.Linear(input_dim, hidden_dim)
+    def __init__(self, in_features: int, out_features: int):
+        super().__init__()
+        self.fc1 = nn.Linear(in_features, 10, bias=False)
+        self.ln = nn.LayerNorm(10)
+        self.fc2 = nn.Linear(10, out_features, bias=False)
         self.relu = nn.ReLU()
-        self.ln = nn.LayerNorm(hidden_dim)
-        self.fc2 = nn.Linear(hidden_dim, output_dim)
-    
-    def forward(self, x):
-        out_fc1 = self.fc1(x)
-        print(f"fc1 输出数据类型: {out_fc1.dtype}")
-        
-        out_relu = self.relu(out_fc1)
-        out_ln = self.ln(out_relu)
-        print(f"LayerNorm 输出数据类型: {out_ln.dtype}")
-        
-        logits = self.fc2(out_ln)
-        print(f"模型最终logits数据类型: {logits.dtype}")
-        return logits
 
-device = torch.device("cuda")
-print(f"使用设备: {device}")
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        x = self.relu(self.fc1(x))
+        x = self.ln(x)
+        x = self.fc2(x)
+        return x
 
-input_dim = 1024
-batch_size = 32
-output_dim = 10
 
-model = ToyModel(input_dim=input_dim, output_dim=output_dim).to(device)
-print(f"模型参数（fc1权重）存储类型: {model.fc1.weight.dtype}\n")
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description="Inspect autocast dtypes for the mixed-precision toy model.")
+    parser.add_argument("--in_features", type=int, default=1024)
+    parser.add_argument("--out_features", type=int, default=10)
+    parser.add_argument("--batch_size", type=int, default=32)
+    parser.add_argument("--device", type=str, default="cuda")
+    parser.add_argument("--autocast_dtype", choices=list(DTYPE_MAP.keys()), default="float16")
+    parser.add_argument("--seed", type=int, default=0)
+    return parser.parse_args()
 
-x = torch.randn(batch_size, input_dim).to(device)
-y = torch.randint(0, output_dim, (batch_size,)).to(device)
 
-optimizer = optim.Adam(model.parameters(), lr=1e-4)
-criterion = nn.CrossEntropyLoss()
+def resolve_device(device_arg: str) -> torch.device:
+    if device_arg == "auto":
+        return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    return torch.device(device_arg)
 
-scaler = GradScaler('cuda')
 
-def train_step(model, x, y, optimizer, criterion, scaler):
-    model.train()
-    optimizer.zero_grad()
-    
-    with autocast(device_type=device.type):
+def dtype_name(dtype: torch.dtype | None) -> str | None:
+    return None if dtype is None else str(dtype).replace("torch.", "")
+
+
+def main() -> None:
+    args = parse_args()
+    torch.manual_seed(args.seed)
+
+    device = resolve_device(args.device)
+    if device.type != "cuda":
+        raise RuntimeError("This script is intended to run on CUDA so autocast behavior matches the assignment.")
+    if not torch.cuda.is_available():
+        raise RuntimeError("CUDA was requested, but no CUDA device is available.")
+
+    autocast_dtype = DTYPE_MAP[args.autocast_dtype]
+    model = ToyModel(in_features=args.in_features, out_features=args.out_features).to(device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=1e-4)
+
+    x = torch.randn(args.batch_size, args.in_features, device=device)
+    y = torch.randint(0, args.out_features, (args.batch_size,), device=device)
+
+    observed_dtypes: dict[str, str | None] = {
+        "parameter_dtype_in_autocast": dtype_name(next(model.parameters()).dtype),
+    }
+
+    def record_fc1_dtype(_module: nn.Module, _inputs: tuple[torch.Tensor, ...], output: torch.Tensor) -> None:
+        observed_dtypes["fc1_output_dtype"] = dtype_name(output.dtype)
+
+    def record_ln_dtype(_module: nn.Module, _inputs: tuple[torch.Tensor, ...], output: torch.Tensor) -> None:
+        observed_dtypes["layer_norm_output_dtype"] = dtype_name(output.dtype)
+
+    fc1_handle = model.fc1.register_forward_hook(record_fc1_dtype)
+    ln_handle = model.ln.register_forward_hook(record_ln_dtype)
+
+    optimizer.zero_grad(set_to_none=True)
+    with torch.autocast(device_type=device.type, dtype=autocast_dtype):
         logits = model(x)
-        loss = criterion(logits, y) 
-    
-    print(f"损失值数据类型: {loss.dtype}\n")
-    
-    scaler.scale(loss).backward()
-    scaler.step(optimizer)
-    scaler.update()
-    
-    print(f"fc1 权重梯度数据类型: {model.fc1.weight.grad.dtype}")
-    return loss
+        loss = F.cross_entropy(logits, y)
 
-loss = train_step(model, x, y, optimizer, criterion, scaler)
-print(f"\n单步训练完成，损失值: {loss.item():.4f}")
+    if autocast_dtype == torch.float16:
+        scaler = GradScaler(device="cuda")
+        scaler.scale(loss).backward()
+        scaler.step(optimizer)
+        scaler.update()
+    else:
+        loss.backward()
+        optimizer.step()
+
+    fc1_handle.remove()
+    ln_handle.remove()
+
+    observed_dtypes["logits_dtype"] = dtype_name(logits.dtype)
+    observed_dtypes["loss_dtype"] = dtype_name(loss.dtype)
+    observed_dtypes["gradient_dtype"] = dtype_name(model.fc1.weight.grad.dtype)
+
+    print(
+        json.dumps(
+            {
+                "device": str(device),
+                "autocast_dtype": args.autocast_dtype,
+                "observed_dtypes": observed_dtypes,
+            },
+            indent=2,
+        )
+    )
+
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,135 @@
+[
+  {
+    "model_size": "small",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward",
+    "compiled": false,
+    "parameter_count": 120945408,
+    "model_config": {
+      "d_model": 768,
+      "d_ff": 3072,
+      "num_layers": 12,
+      "num_heads": 12,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "forward_time": {
+        "mean": 0.028665095940232276,
+        "std": 0.002534260896519104,
+        "min": 0.027171757072210312,
+        "max": 0.035481296479701996
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 526.2373046875,
+      "std": 0.0,
+      "min": 526.2373046875,
+      "max": 526.2373046875
+    }
+  },
+  {
+    "model_size": "medium",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward",
+    "compiled": false,
+    "parameter_count": 412943360,
+    "model_config": {
+      "d_model": 1024,
+      "d_ff": 4096,
+      "num_layers": 24,
+      "num_heads": 16,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "forward_time": {
+        "mean": 0.056027503311634065,
+        "std": 0.0020086749502975557,
+        "min": 0.054443759843707085,
+        "max": 0.06108849123120308
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 1656.35546875,
+      "std": 0.0,
+      "min": 1656.35546875,
+      "max": 1656.35546875
+    }
+  },
+  {
+    "model_size": "large",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward",
+    "compiled": false,
+    "parameter_count": 956611840,
+    "model_config": {
+      "d_model": 1280,
+      "d_ff": 5120,
+      "num_layers": 36,
+      "num_heads": 20,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "forward_time": {
+        "mean": 0.08263932783156633,
+        "std": 0.001803449321514159,
+        "min": 0.08040403760969639,
+        "max": 0.08659189380705357
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 3853.1767578125,
+      "std": 0.0,
+      "min": 3853.1767578125,
+      "max": 3853.1767578125
+    }
+  },
+  {
+    "model_size": "xl",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward",
+    "compiled": false,
+    "parameter_count": 1982235200,
+    "model_config": {
+      "d_model": 1600,
+      "d_ff": 6400,
+      "num_layers": 48,
+      "num_heads": 25,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "forward_time": {
+        "mean": 0.15724582485854627,
+        "std": 0.0036455047228713413,
+        "min": 0.15340428799390793,
+        "max": 0.16360420919954777
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 7836.12353515625,
+      "std": 0.0,
+      "min": 7836.12353515625,
+      "max": 7836.12353515625
+    }
+  },
+  {
+    "model_size": "2.7B",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "forward",
+    "compiled": false,
+    "status": "oom",
+    "error": "CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 64.44 MiB is free. Including non-PyTorch memory, this process has 11.56 GiB memory in use. Of the allocated memory 11.25 GiB is allocated by PyTorch, and 13.29 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+  }
+]

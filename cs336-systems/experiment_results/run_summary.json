@@ -1,0 +1,98 @@
+[
+  {
+    "name": "mixed_precision_fp16",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/mixed_precision_fp16.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/mixed_precision_fp16.log",
+    "stdout_tail": "{\n  \"device\": \"cuda\",\n  \"autocast_dtype\": \"float16\",\n  \"observed_dtypes\": {\n    \"parameter_dtype_in_autocast\": \"float32\",\n    \"fc1_output_dtype\": \"float16\",\n    \"layer_norm_output_dtype\": \"float32\",\n    \"logits_dtype\": \"float16\",\n    \"loss_dtype\": \"float32\",\n    \"gradient_dtype\": \"float32\"\n  }\n}\n",
+    "stderr_tail": ""
+  },
+  {
+    "name": "mixed_precision_bf16",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/mixed_precision_bf16.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/mixed_precision_bf16.log",
+    "stdout_tail": "{\n  \"device\": \"cuda\",\n  \"autocast_dtype\": \"bfloat16\",\n  \"observed_dtypes\": {\n    \"parameter_dtype_in_autocast\": \"float32\",\n    \"fc1_output_dtype\": \"bfloat16\",\n    \"layer_norm_output_dtype\": \"float32\",\n    \"logits_dtype\": \"bfloat16\",\n    \"loss_dtype\": \"float32\",\n    \"gradient_dtype\": \"float32\"\n  }\n}\n",
+    "stderr_tail": ""
+  },
+  {
+    "name": "transformer_vanilla_forward_seq128",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_vanilla_forward_seq128.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_vanilla_forward_seq128.log",
+    "stdout_tail": ".15724582485854627,\n        \"std\": 0.0036455047228713413,\n        \"min\": 0.15340428799390793,\n        \"max\": 0.16360420919954777\n      }\n    },\n    \"peak_memory_mb\": {\n      \"mean\": 7836.12353515625,\n      \"std\": 0.0,\n      \"min\": 7836.12353515625,\n      \"max\": 7836.12353515625\n    }\n  },\n  {\n    \"model_size\": \"2.7B\",\n    \"device\": \"cuda\",\n    \"dtype\": \"float32\",\n    \"mode\": \"forward\",\n    \"compiled\": false,\n    \"status\": \"oom\",\n    \"error\": \"CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 64.44 MiB is free. Including non-PyTorch memory, this process has 11.56 GiB memory in use. Of the allocated memory 11.25 GiB is allocated by PyTorch, and 13.29 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  }\n]\n",
+    "stderr_tail": ""
+  },
+  {
+    "name": "transformer_vanilla_forward_backward_seq128",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_vanilla_forward_backward_seq128.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_vanilla_forward_backward_seq128.log",
+    "stdout_tail": "ved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  },\n  {\n    \"model_size\": \"2.7B\",\n    \"device\": \"cuda\",\n    \"dtype\": \"float32\",\n    \"mode\": \"forward_backward\",\n    \"compiled\": false,\n    \"status\": \"oom\",\n    \"error\": \"CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 36.44 MiB is free. Including non-PyTorch memory, this process has 11.59 GiB memory in use. Of the allocated memory 11.26 GiB is allocated by PyTorch, and 25.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  }\n]\n",
+    "stderr_tail": ""
+  },
+  {
+    "name": "transformer_bf16_forward_backward_seq128",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_bf16_forward_backward_seq128.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_bf16_forward_backward_seq128.log",
+    "stdout_tail": "ed by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  },\n  {\n    \"model_size\": \"2.7B\",\n    \"device\": \"cuda\",\n    \"dtype\": \"bfloat16\",\n    \"mode\": \"forward_backward\",\n    \"compiled\": false,\n    \"status\": \"oom\",\n    \"error\": \"CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 30.44 MiB is free. Including non-PyTorch memory, this process has 11.59 GiB memory in use. Of the allocated memory 11.26 GiB is allocated by PyTorch, and 25.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  }\n]\n",
+    "stderr_tail": ""
+  },
+  {
+    "name": "transformer_vanilla_train_step_seq128",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_vanilla_train_step_seq128.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_vanilla_train_step_seq128.log",
+    "stdout_tail": " reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  },\n  {\n    \"model_size\": \"2.7B\",\n    \"device\": \"cuda\",\n    \"dtype\": \"float32\",\n    \"mode\": \"train_step\",\n    \"compiled\": false,\n    \"status\": \"oom\",\n    \"error\": \"CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 36.44 MiB is free. Including non-PyTorch memory, this process has 11.59 GiB memory in use. Of the allocated memory 11.26 GiB is allocated by PyTorch, and 25.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  }\n]\n",
+    "stderr_tail": ""
+  },
+  {
+    "name": "transformer_compiled_forward_seq128",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_compiled_forward_seq128.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_compiled_forward_seq128.log",
+    "stdout_tail": " 0.13961700890213252,\n        \"std\": 0.003944642096331327,\n        \"min\": 0.13659753277897835,\n        \"max\": 0.14818267337977886\n      }\n    },\n    \"peak_memory_mb\": {\n      \"mean\": 7814.83056640625,\n      \"std\": 0.0,\n      \"min\": 7814.83056640625,\n      \"max\": 7814.83056640625\n    }\n  },\n  {\n    \"model_size\": \"2.7B\",\n    \"device\": \"cuda\",\n    \"dtype\": \"float32\",\n    \"mode\": \"forward\",\n    \"compiled\": true,\n    \"status\": \"oom\",\n    \"error\": \"CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 58.44 MiB is free. Including non-PyTorch memory, this process has 11.57 GiB memory in use. Of the allocated memory 11.24 GiB is allocated by PyTorch, and 31.41 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  }\n]\n",
+    "stderr_tail": "/root/cs336/assignment2-systems/.venv/lib/python3.12/site-packages/torch/_inductor/compile_fx.py:194: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.\n  warnings.warn(\n"
+  },
+  {
+    "name": "transformer_compiled_train_step_seq128",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_compiled_train_step_seq128.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_compiled_train_step_seq128.log",
+    "stdout_tail": "s reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  },\n  {\n    \"model_size\": \"2.7B\",\n    \"device\": \"cuda\",\n    \"dtype\": \"float32\",\n    \"mode\": \"train_step\",\n    \"compiled\": true,\n    \"status\": \"oom\",\n    \"error\": \"CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 2.44 MiB is free. Including non-PyTorch memory, this process has 11.62 GiB memory in use. Of the allocated memory 10.82 GiB is allocated by PyTorch, and 512.53 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\"\n  }\n]\n",
+    "stderr_tail": "/root/cs336/assignment2-systems/.venv/lib/python3.12/site-packages/torch/_inductor/compile_fx.py:194: UserWarning: TensorFloat32 tensor cores for float32 matrix multiplication available but not enabled. Consider setting `torch.set_float32_matmul_precision('high')` for better performance.\n  warnings.warn(\n"
+  },
+  {
+    "name": "transformer_warmup_sensitivity_small",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/warmup_sensitivity_small.json",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/transformer_warmup_sensitivity_small.log",
+    "stdout_tail": "",
+    "stderr_tail": ""
+  },
+  {
+    "name": "attention_eager_and_compiled",
+    "returncode": 0,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/benchmark_attn_comparison_results.md",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/attention_eager_and_compiled.log",
+    "stdout_tail": "\n| compiled         |        64 |      1024 |    0.000690265 |     0.00116307  |           95.375  | ok       |\n| compiled         |        64 |      4096 |    0.00546265  |     0.0136937   |         1112.75   | ok       |\n| compiled         |        64 |      8192 |    0.0197558   |     0.0526331   |         4289.25   | ok       |\n| compiled         |        64 |     16384 |  nan           |   nan           |          nan      | oom      |\n| compiled         |       128 |       256 |    0.000424799 |     0.000632634 |           27.3438 | ok       |\n| compiled         |       128 |      1024 |    0.000736507 |     0.00129715  |          109.375  | ok       |\n| compiled         |       128 |      4096 |    0.00651295  |     0.0149809   |         1168.75   | ok       |\n| compiled         |       128 |      8192 |    0.0240715   |     0.0582002   |         4401.25   | ok       |\n| compiled         |       128 |     16384 |  nan           |   nan           |          nan      | oom      |\n",
+    "stderr_tail": "/root/cs336/assignment2-systems/.venv/lib/python3.12/site-packages/torch/autograd/graph.py:823: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:180.)\n  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass\n"
+  },
+  {
+    "name": "memory_profile_2p7b_float32_forward_128",
+    "returncode": 1,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/memory_2p7b_float32_forward_128.pickle",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/memory_profile_2p7b_float32_forward_128.log",
+    "stdout_tail": "",
+    "stderr_tail": ".py\", line 903, in _apply\n    module._apply(fn)\n  [Previous line repeated 1 more time]\n  File \"/root/cs336/assignment2-systems/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 930, in _apply\n    param_applied = fn(param)\n                    ^^^^^^^^^\n  File \"/root/cs336/assignment2-systems/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1329, in convert\n    return t.to(\n           ^^^^^\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 36.44 MiB is free. Including non-PyTorch memory, this process has 11.59 GiB memory in use. Of the allocated memory 11.34 GiB is allocated by PyTorch, and 1.41 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"
+  },
+  {
+    "name": "memory_profile_2p7b_bf16_forward_128",
+    "returncode": 1,
+    "result_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/memory_2p7b_bf16_forward_128.pickle",
+    "log_file": "/root/cs336/assignment2-systems/cs336-systems/experiment_results/memory_profile_2p7b_bf16_forward_128.log",
+    "stdout_tail": "",
+    "stderr_tail": ".py\", line 903, in _apply\n    module._apply(fn)\n  [Previous line repeated 1 more time]\n  File \"/root/cs336/assignment2-systems/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 930, in _apply\n    param_applied = fn(param)\n                    ^^^^^^^^^\n  File \"/root/cs336/assignment2-systems/.venv/lib/python3.12/site-packages/torch/nn/modules/module.py\", line 1329, in convert\n    return t.to(\n           ^^^^^\ntorch.OutOfMemoryError: CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 36.44 MiB is free. Including non-PyTorch memory, this process has 11.59 GiB memory in use. Of the allocated memory 11.34 GiB is allocated by PyTorch, and 1.41 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)\n"
+  }
+]

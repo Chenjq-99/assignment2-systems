@@ -1,0 +1,174 @@
+[
+  {
+    "warmup_steps": 0,
+    "returncode": 0,
+    "stdout": "{\n  \"model_size\": \"small\",\n  \"device\": \"cuda\",\n  \"dtype\": \"float32\",\n  \"mode\": \"forward_backward\",\n  \"compiled\": false,\n  \"parameter_count\": 120945408,\n  \"model_config\": {\n    \"d_model\": 768,\n    \"d_ff\": 3072,\n    \"num_layers\": 12,\n    \"num_heads\": 12,\n    \"vocab_size\": 10000,\n    \"context_length\": 128,\n    \"rope_theta\": 10000.0\n  },\n  \"timings\": {\n    \"backward_time\": {\n      \"mean\": 0.0697154425084591,\n      \"std\": 0.049707347817985276,\n      \"min\": 0.05082763358950615,\n      \"max\": 0.21108970791101456\n    },\n    \"forward_time\": {\n      \"mean\": 0.08753098510205745,\n      \"std\": 0.1631582377478455,\n      \"min\": 0.03112448938190937,\n      \"max\": 0.551841365173459\n    }\n  },\n  \"peak_memory_mb\": {\n    \"mean\": 1232.693359375,\n    \"std\": 0.0,\n    \"min\": 1232.693359375,\n    \"max\": 1232.693359375\n  }\n}\n",
+    "stderr": "",
+    "parsed": {
+      "model_size": "small",
+      "device": "cuda",
+      "dtype": "float32",
+      "mode": "forward_backward",
+      "compiled": false,
+      "parameter_count": 120945408,
+      "model_config": {
+        "d_model": 768,
+        "d_ff": 3072,
+        "num_layers": 12,
+        "num_heads": 12,
+        "vocab_size": 10000,
+        "context_length": 128,
+        "rope_theta": 10000.0
+      },
+      "timings": {
+        "backward_time": {
+          "mean": 0.0697154425084591,
+          "std": 0.049707347817985276,
+          "min": 0.05082763358950615,
+          "max": 0.21108970791101456
+        },
+        "forward_time": {
+          "mean": 0.08753098510205745,
+          "std": 0.1631582377478455,
+          "min": 0.03112448938190937,
+          "max": 0.551841365173459
+        }
+      },
+      "peak_memory_mb": {
+        "mean": 1232.693359375,
+        "std": 0.0,
+        "min": 1232.693359375,
+        "max": 1232.693359375
+      }
+    }
+  },
+  {
+    "warmup_steps": 1,
+    "returncode": 0,
+    "stdout": "{\n  \"model_size\": \"small\",\n  \"device\": \"cuda\",\n  \"dtype\": \"float32\",\n  \"mode\": \"forward_backward\",\n  \"compiled\": false,\n  \"parameter_count\": 120945408,\n  \"model_config\": {\n    \"d_model\": 768,\n    \"d_ff\": 3072,\n    \"num_layers\": 12,\n    \"num_heads\": 12,\n    \"vocab_size\": 10000,\n    \"context_length\": 128,\n    \"rope_theta\": 10000.0\n  },\n  \"timings\": {\n    \"backward_time\": {\n      \"mean\": 0.05376656260341406,\n      \"std\": 0.0027519694989823424,\n      \"min\": 0.05051854066550732,\n      \"max\": 0.05946696922183037\n    },\n    \"forward_time\": {\n      \"mean\": 0.03774525485932827,\n      \"std\": 0.0031187049544788353,\n      \"min\": 0.034470172598958015,\n      \"max\": 0.04572860710322857\n    }\n  },\n  \"peak_memory_mb\": {\n    \"mean\": 1232.693359375,\n    \"std\": 0.0,\n    \"min\": 1232.693359375,\n    \"max\": 1232.693359375\n  }\n}\n",
+    "stderr": "",
+    "parsed": {
+      "model_size": "small",
+      "device": "cuda",
+      "dtype": "float32",
+      "mode": "forward_backward",
+      "compiled": false,
+      "parameter_count": 120945408,
+      "model_config": {
+        "d_model": 768,
+        "d_ff": 3072,
+        "num_layers": 12,
+        "num_heads": 12,
+        "vocab_size": 10000,
+        "context_length": 128,
+        "rope_theta": 10000.0
+      },
+      "timings": {
+        "backward_time": {
+          "mean": 0.05376656260341406,
+          "std": 0.0027519694989823424,
+          "min": 0.05051854066550732,
+          "max": 0.05946696922183037
+        },
+        "forward_time": {
+          "mean": 0.03774525485932827,
+          "std": 0.0031187049544788353,
+          "min": 0.034470172598958015,
+          "max": 0.04572860710322857
+        }
+      },
+      "peak_memory_mb": {
+        "mean": 1232.693359375,
+        "std": 0.0,
+        "min": 1232.693359375,
+        "max": 1232.693359375
+      }
+    }
+  },
+  {
+    "warmup_steps": 2,
+    "returncode": 0,
+    "stdout": "{\n  \"model_size\": \"small\",\n  \"device\": \"cuda\",\n  \"dtype\": \"float32\",\n  \"mode\": \"forward_backward\",\n  \"compiled\": false,\n  \"parameter_count\": 120945408,\n  \"model_config\": {\n    \"d_model\": 768,\n    \"d_ff\": 3072,\n    \"num_layers\": 12,\n    \"num_heads\": 12,\n    \"vocab_size\": 10000,\n    \"context_length\": 128,\n    \"rope_theta\": 10000.0\n  },\n  \"timings\": {\n    \"backward_time\": {\n      \"mean\": 0.03964975923299789,\n      \"std\": 0.0029187789480819687,\n      \"min\": 0.03636505268514156,\n      \"max\": 0.04463092051446438\n    },\n    \"forward_time\": {\n      \"mean\": 0.034284879453480244,\n      \"std\": 0.001213338519088531,\n      \"min\": 0.032501108944416046,\n      \"max\": 0.035726550966501236\n    }\n  },\n  \"peak_memory_mb\": {\n    \"mean\": 1232.693359375,\n    \"std\": 0.0,\n    \"min\": 1232.693359375,\n    \"max\": 1232.693359375\n  }\n}\n",
+    "stderr": "",
+    "parsed": {
+      "model_size": "small",
+      "device": "cuda",
+      "dtype": "float32",
+      "mode": "forward_backward",
+      "compiled": false,
+      "parameter_count": 120945408,
+      "model_config": {
+        "d_model": 768,
+        "d_ff": 3072,
+        "num_layers": 12,
+        "num_heads": 12,
+        "vocab_size": 10000,
+        "context_length": 128,
+        "rope_theta": 10000.0
+      },
+      "timings": {
+        "backward_time": {
+          "mean": 0.03964975923299789,
+          "std": 0.0029187789480819687,
+          "min": 0.03636505268514156,
+          "max": 0.04463092051446438
+        },
+        "forward_time": {
+          "mean": 0.034284879453480244,
+          "std": 0.001213338519088531,
+          "min": 0.032501108944416046,
+          "max": 0.035726550966501236
+        }
+      },
+      "peak_memory_mb": {
+        "mean": 1232.693359375,
+        "std": 0.0,
+        "min": 1232.693359375,
+        "max": 1232.693359375
+      }
+    }
+  },
+  {
+    "warmup_steps": 5,
+    "returncode": 0,
+    "stdout": "{\n  \"model_size\": \"small\",\n  \"device\": \"cuda\",\n  \"dtype\": \"float32\",\n  \"mode\": \"forward_backward\",\n  \"compiled\": false,\n  \"parameter_count\": 120945408,\n  \"model_config\": {\n    \"d_model\": 768,\n    \"d_ff\": 3072,\n    \"num_layers\": 12,\n    \"num_heads\": 12,\n    \"vocab_size\": 10000,\n    \"context_length\": 128,\n    \"rope_theta\": 10000.0\n  },\n  \"timings\": {\n    \"backward_time\": {\n      \"mean\": 0.038713226281106475,\n      \"std\": 0.0018017239504157017,\n      \"min\": 0.035280123353004456,\n      \"max\": 0.04065499268472195\n    },\n    \"forward_time\": {\n      \"mean\": 0.03543903920799494,\n      \"std\": 0.0036017765271720197,\n      \"min\": 0.03143040090799332,\n      \"max\": 0.044141294434666634\n    }\n  },\n  \"peak_memory_mb\": {\n    \"mean\": 1232.693359375,\n    \"std\": 0.0,\n    \"min\": 1232.693359375,\n    \"max\": 1232.693359375\n  }\n}\n",
+    "stderr": "",
+    "parsed": {
+      "model_size": "small",
+      "device": "cuda",
+      "dtype": "float32",
+      "mode": "forward_backward",
+      "compiled": false,
+      "parameter_count": 120945408,
+      "model_config": {
+        "d_model": 768,
+        "d_ff": 3072,
+        "num_layers": 12,
+        "num_heads": 12,
+        "vocab_size": 10000,
+        "context_length": 128,
+        "rope_theta": 10000.0
+      },
+      "timings": {
+        "backward_time": {
+          "mean": 0.038713226281106475,
+          "std": 0.0018017239504157017,
+          "min": 0.035280123353004456,
+          "max": 0.04065499268472195
+        },
+        "forward_time": {
+          "mean": 0.03543903920799494,
+          "std": 0.0036017765271720197,
+          "min": 0.03143040090799332,
+          "max": 0.044141294434666634
+        }
+      },
+      "peak_memory_mb": {
+        "mean": 1232.693359375,
+        "std": 0.0,
+        "min": 1232.693359375,
+        "max": 1232.693359375
+      }
+    }
+  }
+]

@@ -1,0 +1,115 @@
+[
+  {
+    "model_size": "small",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "train_step",
+    "compiled": false,
+    "parameter_count": 120945408,
+    "model_config": {
+      "d_model": 768,
+      "d_ff": 3072,
+      "num_layers": 12,
+      "num_heads": 12,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "backward_time": {
+        "mean": 0.039239208213984966,
+        "std": 0.0025100678355801614,
+        "min": 0.03649880178272724,
+        "max": 0.04371843859553337
+      },
+      "forward_time": {
+        "mean": 0.031893101148307325,
+        "std": 0.0020922903422432707,
+        "min": 0.02971888892352581,
+        "max": 0.035807641223073006
+      },
+      "optimizer_time": {
+        "mean": 0.026611523889005183,
+        "std": 0.0023266431663273458,
+        "min": 0.02389027364552021,
+        "max": 0.030946895480155945
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 2244.09296875,
+      "std": 2.074169951952668,
+      "min": 2240.58984375,
+      "max": 2247.33984375
+    }
+  },
+  {
+    "model_size": "medium",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "train_step",
+    "compiled": false,
+    "parameter_count": 412943360,
+    "model_config": {
+      "d_model": 1024,
+      "d_ff": 4096,
+      "num_layers": 24,
+      "num_heads": 16,
+      "vocab_size": 10000,
+      "context_length": 128,
+      "rope_theta": 10000.0
+    },
+    "timings": {
+      "backward_time": {
+        "mean": 0.07845254745334387,
+        "std": 0.0023621012253197777,
+        "min": 0.07542669400572777,
+        "max": 0.08314002864062786
+      },
+      "forward_time": {
+        "mean": 0.06318932082504033,
+        "std": 0.0022140811051015205,
+        "min": 0.06067600101232529,
+        "max": 0.067673584446311
+      },
+      "optimizer_time": {
+        "mean": 0.07579096555709838,
+        "std": 0.00043627709376081286,
+        "min": 0.07528674043715,
+        "max": 0.07650974951684475
+      }
+    },
+    "peak_memory_mb": {
+      "mean": 6700.91455078125,
+      "std": 0.22642776165920997,
+      "min": 6700.58642578125,
+      "max": 6701.05517578125
+    }
+  },
+  {
+    "model_size": "large",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "train_step",
+    "compiled": false,
+    "status": "oom",
+    "error": "CUDA out of memory. Tried to allocate 26.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 8.44 MiB is free. Including non-PyTorch memory, this process has 11.62 GiB memory in use. Of the allocated memory 10.66 GiB is allocated by PyTorch, and 672.76 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+  },
+  {
+    "model_size": "xl",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "train_step",
+    "compiled": false,
+    "status": "oom",
+    "error": "CUDA out of memory. Tried to allocate 20.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 12.44 MiB is free. Including non-PyTorch memory, this process has 11.61 GiB memory in use. Of the allocated memory 10.98 GiB is allocated by PyTorch, and 332.56 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+  },
+  {
+    "model_size": "2.7B",
+    "device": "cuda",
+    "dtype": "float32",
+    "mode": "train_step",
+    "compiled": false,
+    "status": "oom",
+    "error": "CUDA out of memory. Tried to allocate 100.00 MiB. GPU 0 has a total capacity of 11.63 GiB of which 36.44 MiB is free. Including non-PyTorch memory, this process has 11.59 GiB memory in use. Of the allocated memory 11.26 GiB is allocated by PyTorch, and 25.16 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)"
+  }
+]
